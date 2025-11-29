@@ -15,7 +15,7 @@ class ReportController extends Controller
     {
         $request->validate([
             'product_id' => 'nullable|exists:products,id',
-            'type' => 'required|string|in:damage,borrow,returned,other',
+            'type' => 'required|string|in:rusak,peminjaman,pengembalian,other',
             'quantity' => 'nullable|integer|min:0',
             'notes' => 'nullable|string|max:1000',
         ]);
@@ -55,7 +55,7 @@ class ReportController extends Controller
         }
 
         // Example: for damage or borrow, decrement stock by quantity when approving
-        if (in_array($report->type, ['damage','borrow','returned']) && $report->product_id && $report->quantity > 0) {
+        if (in_array($report->type, ['rusak','peminjaman','pengembalian']) && $report->product_id && $report->quantity > 0) {
             $product = Product::find($report->product_id);
             if ($product && $product->quantity >= $report->quantity) {
                 $product->decrement('quantity', $report->quantity);

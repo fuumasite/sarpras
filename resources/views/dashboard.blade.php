@@ -107,7 +107,7 @@
                     <input type="hidden" name="product_id" id="report_product_id">
 
                     <div class="modal-header bg-light text-dark">
-                        <h5 class="modal-title fw-bold"><i class="fas fa-flag me-2"></i> Laporkan Barang</h5>
+                        <h5 class="modal-title fw-bold"><i class="fas fa-flag me-2"></i> Laporan Sarana dan Prasarana</h5>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"></button>
                     </div>
 
@@ -118,10 +118,10 @@
 
                         <label class="form-label fw-bold small text-muted">Tipe Laporan</label>
                         <select name="type" class="form-select mb-3" required>
-                            <option value="damage">Rusak</option>
-                            <option value="borrow">Peminjaman</option>
-                            <option value="returned">Dikembalikan</option>
-                            <option value="other">Lainnya</option>
+                            <option value="rusak">Rusak</option>
+                            <option value="peminjaman">Peminjaman</option>
+                            <option value="pengembalian">Pengembalian</option>
+                            <option value="lainnya">Lainnya</option>
                         </select>
 
                         <label class="form-label fw-bold small text-muted">Jumlah (jika relevan)</label>
