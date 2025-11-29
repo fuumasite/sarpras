@@ -4,17 +4,16 @@
 
 **SarPras SV IPB** adalah sistem pelaporan dan manajemen sarana & prasarana kampus yang memungkinkan pengguna (mahasiswa/user) melaporkan kerusakan, permintaan perbaikan, dan memantau status penyelesaian. Sistem ini menggunakan UUID untuk keamanan dan mendukung peran Admin dan Pengguna.
 
-Fitur utama termasuk **Laporan & Statistik Real-time**, **Manajemen Aset**, **Permintaan Restock / Perbaikan**, dan **Audit Trails** untuk jejak tindakan pengguna.
+Fitur utama termasuk **Laporan Real-time**, **Manajemen Aset**, **Permintaan Perbaikan**, dan **Audit Trails** untuk jejak tindakan pengguna.
 
 ## **1. Technical Stack**
 
 Ang system ay binuo gamit ang mga sumusunod na teknolohiya base sa requirements:
 
 -   **Framework:** Laravel 12 (PHP 8.2)
--   **Database:** MySQL (XAMPP)
+-   **Database:** MySQL (LAMP)
 -   **Frontend:** Bootstrap 5 (Sass/SCSS) + Vite
 -   **Scripting:** JavaScript (ES6), jQuery
--   **Charts:** Chart.js (Data Visualization)
 -   **PDF & Barcodes:** `barryvdh/laravel-dompdf` & `picqer/php-barcode-generator`
 -   **Authentication:** Laravel Breeze (Customized)
 
