@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
 
     // User: submit reports (damage/borrow/other)
     Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
+    Route::delete('/reports/{id}', [ReportController::class, 'destroy'])->name('reports.destroy');
 });
 
 // ADMIN ROUTES (Protected by 'auth', 'verified', AND 'admin' middleware)
@@ -71,6 +72,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::patch('/reports/{id}/approve', [ReportController::class, 'approve'])->name('reports.approve');
     Route::patch('/reports/{id}/reject', [ReportController::class, 'reject'])->name('reports.reject');
+    Route::delete('/reports/{id}', [ReportController::class, 'destroy'])->name('reports.destroy');
 });
 
 require __DIR__.'/auth.php';

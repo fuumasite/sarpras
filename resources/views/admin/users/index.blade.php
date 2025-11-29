@@ -20,7 +20,7 @@
                             <th class="py-3 px-3 small fw-bold text-muted">Name</th>
                             <th class="py-3 px-3 small fw-bold text-muted">Email</th>
                             <th class="py-3 px-3 small fw-bold text-muted">Joined Date</th>
-                            <th class="py-3 px-3 small fw-bold text-muted text-center">Status</th>
+                            
                             <th class="py-3 px-3 small fw-bold text-muted text-center">Action</th>
                         </tr>
                     </thead>
@@ -44,13 +44,7 @@
                                 <td class="px-3 fw-bold text-dark small">{{ $user->name }}</td>
                                 <td class="px-3 text-muted fw-bold small">{{ $user->email }}</td>
                                 <td class="px-3 text-muted small">{{ $user->created_at->format('M d, Y') }}</td>
-                                <td class="px-3 text-center">
-                                    @if($user->email_verified_at)
-                                        <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">Verified</span>
-                                    @else
-                                        <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill">Pending</span>
-                                    @endif
-                                </td>
+                              
                                 <td class="px-3 text-center">
                                     <div class="btn-group">
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-light text-primary border me-2 rounded" title="Edit">

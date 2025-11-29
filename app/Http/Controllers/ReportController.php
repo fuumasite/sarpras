@@ -93,6 +93,32 @@ class ReportController extends Controller
         return back()->with('success', 'Laporan ditolak.');
     }
 
+    // Delete report (user can delete their own pending reports, admin can delete any)
+    public function destroy($id)
+    {
+        $report = Report::findOrFail($id);
+
+        // // Check if user can delete this report
+        // if (Auth::user()->role !== 'admin' && $report->user_id !== Auth::id()) {
+        //     return back()->with('error', 'Anda tidak memiliki izin untuk menghapus laporan ini.');
+        // }
+
+        // // Only allow deletion of pending reports for non-admin users
+        // if (Auth::user()->role !== 'admin' && $report->status !== 'pending') {
+        //     return back()->with('error', 'Laporan yang sudah diproses tidak dapat dihapus.');
+        // }
+
+        $report->delete();
+
+        ActivityLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'Deleted Report',
+            'details' => "Deleted report {$id} ({$report->type})"
+        ]);
+
+        return back()->with('success', 'Laporan berhasil dihapus.');
+    }
+
     // Export inventory PDF (keperluan admin) — digabungkan disini
     public function exportInventory()
     {

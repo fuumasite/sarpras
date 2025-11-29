@@ -47,9 +47,14 @@
                                             @method('PATCH')
                                             <button class="btn btn-sm btn-danger">Reject</button>
                                         </form>
-                                    @else
-                                        <small class="text-muted">Processed</small>
                                     @endif
+                                    <form method="POST" action="{{ route('admin.reports.destroy', $report->id) }}" style="display:inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus laporan ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

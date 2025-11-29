@@ -161,6 +161,13 @@
                                     <div class="mt-1">
                                         @if($r->status === 'pending')
                                             <span class="badge bg-warning">Menunggu</span>
+                                            <form action="{{ route('reports.destroy', $r->id) }}" method="POST" class="d-inline ms-2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus laporan ini?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         @elseif($r->status === 'approved')
                                             <span class="badge bg-success">Disetujui</span>
                                         @else
