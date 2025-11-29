@@ -2,11 +2,11 @@
     <div class="container py-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h3 class="fw-bold text-dark m-0">Manage Staff</h3>
+                <h3 class="fw-bold text-dark m-0">Manage Users</h3>
                 <small class="text-muted">List of authorized personnel</small>
             </div>
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary shadow-sm px-4">
-                <i class="fas fa-user-plus me-2"></i> Add Staff
+                <i class="fas fa-user-plus me-2"></i> Add User
             </a>
         </div>
 
@@ -57,9 +57,9 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
 
-                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to remove this staff?');">
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to remove this user?');">
                                             @csrf @method('DELETE')
-                                            <button class="btn btn-sm btn-light text-danger border rounded" title="Remove Staff">
+                                            <button class="btn btn-sm btn-light text-danger border rounded" title="Remove User">
                                                 <i class="fas fa-user-times"></i>
                                             </button>
                                         </form>

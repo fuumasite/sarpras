@@ -6,7 +6,7 @@
                     <div class="card-header bg-white py-3 border-bottom-0">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-plus-circle text-primary me-2 fs-4"></i>
-                            <h5 class="fw-bold m-0 text-dark">Add New Product (Staff)</h5>
+                            <h5 class="fw-bold m-0 text-dark">Add New Product (User)</h5>
                         </div>
                     </div>
                     <div class="card-body p-4">
@@ -35,27 +35,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold small text-muted">Price (₱) <span class="text-danger">*</span></label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light text-secondary fw-bold">₱</span>
-                                        <input type="number" step="0.01" name="price" class="form-control" placeholder="0.00" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
                                     <label class="form-label fw-bold small text-muted">Stock <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-light text-secondary"><i class="fas fa-cubes"></i></span>
                                         <input type="number" name="quantity" class="form-control" placeholder="0" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold small text-muted">Image</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light text-secondary"><i class="fas fa-image"></i></span>
-                                        <input type="file" name="image" class="form-control" accept="image/*">
                                     </div>
                                 </div>
                             </div>

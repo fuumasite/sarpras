@@ -27,9 +27,9 @@
                     <div class="container">
                         <a class="navbar-brand fw-bold text-dark d-flex align-items-center gap-2" href="#">
                             <div class="bg-success bg-opacity-10 rounded-3 p-2 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-warehouse text-success"></i>
+                                <i class="fas fa-university text-success"></i>
                             </div>
-                            <span style="letter-spacing: -0.5px;">Stock<span style="color: #8AB973;">Sync</span></span>
+                            <span style="letter-spacing: -0.5px;">SarPras <span style="color: #8AB973;">SV IPB</span></span>
                         </a>
                         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                             <i class="fas fa-bars text-dark"></i>
@@ -71,17 +71,17 @@
                                 </div>
                                 
                                 <h1 class="display-3 fw-bolder mb-4" style="line-height: 1.1;">
-                                    Inventory Control <br>
-                                    <span class="gradient-text">Reimagined.</span>
+                                    Sistem Pelaporan <br>
+                                    <span class="gradient-text">Sarana & Prasarana Kampus</span>
                                 </h1>
                                 
                                 <p class="lead text-muted mb-5" style="max-width: 90%;">
-                                    Experience the future of stock management. Real-time tracking, smart analytics, and seamless collaboration—all in one secure platform.
+                                    Kelola pelaporan kerusakan, permintaan perbaikan, dan inventaris sarana kampus dengan mudah dan terstruktur.
                                 </p>
                                 
                                 <div class="d-flex gap-3 flex-wrap">
                                     <a href="{{ route('register') }}" class="btn btn-glow btn-lg">
-                                        Start Managing Now
+                                        Mulai Pelaporan
                                     </a>
                                     <a href="#features" class="btn btn-outline-modern btn-lg">
                                         <i class="fas fa-play-circle me-2"></i> Learn More
@@ -137,7 +137,7 @@
                     <div class="text-center mb-5" style="max-width: 700px; margin: 0 auto;">
                         <span class="text-success fw-bold text-uppercase small ls-2">Why Choose Us</span>
                         <h2 class="display-5 fw-bold mt-2 mb-3 text-dark">Powerful Features</h2>
-                        <p class="text-muted">We simplified inventory management so you can focus on growing your business.</p>
+                                        <p class="text-muted">Sistem kami memudahkan pelaporan dan pemantauan sarana & prasarana kampus.</p>
                     </div>
 
                     <div class="row g-4">
@@ -146,8 +146,8 @@
                                 <div class="feature-icon bg-success bg-opacity-10 text-success">
                                     <i class="fas fa-chart-pie"></i>
                                 </div>
-                                <h4 class="fw-bold mb-3">Smart Analytics</h4>
-                                <p class="text-muted">Visualize your data with interactive charts. Track sales, low stocks, and performance in real-time.</p>
+                                <h4 class="fw-bold mb-3">Laporan & Statistik</h4>
+                                <p class="text-muted">Visualisasikan data pelaporan dengan grafik interaktif. Pantau status perbaikan dan kondisi aset secara real-time.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -155,8 +155,8 @@
                                 <div class="feature-icon bg-primary bg-opacity-10 text-primary">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
-                                <h4 class="fw-bold mb-3">Role-Based Security</h4>
-                                <p class="text-muted">Advanced permission system for Admins and Staff. Every action is logged for total accountability.</p>
+                                <h4 class="fw-bold mb-3">Hak Akses Terstruktur</h4>
+                                <p class="text-muted">Sistem hak akses untuk Admin dan Petugas. Semua aksi dicatat untuk akuntabilitas.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -164,8 +164,8 @@
                                 <div class="feature-icon bg-warning bg-opacity-10 text-warning">
                                     <i class="fas fa-print"></i>
                                 </div>
-                                <h4 class="fw-bold mb-3">Barcode Printing</h4>
-                                <p class="text-muted">Generate and print custom product labels and barcodes instantly. Streamline your workflow.</p>
+                                <h4 class="fw-bold mb-3">Manajemen Aset</h4>
+                                <p class="text-muted">Kelola data aset kampus, cetak label, dan atur inventaris dengan cepat.</p>
                             </div>
                         </div>
                     </div>
@@ -177,14 +177,14 @@
             <div class="container pt-5 pb-4">
                 <div class="row">
                     <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
-                        <div class="d-flex align-items-center mb-3">
+                            <div class="d-flex align-items-center mb-3">
                             <div class="bg-success bg-opacity-10 p-2 rounded me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                <i class="fas fa-warehouse text-success"></i>
+                                <i class="fas fa-university text-success"></i>
                             </div>
-                            <span class="h5 fw-bold mb-0 text-dark">Stock<span class="text-success">Sync</span></span>
+                            <span class="h5 fw-bold mb-0 text-dark">SarPras <span class="text-success">SV IPB</span></span>
                         </div>
                         <p class="text-muted small pe-lg-5">
-                            The most reliable inventory management system designed for modern businesses. Secure, fast, and easy to use.
+                            Sistem pelaporan sarana dan prasarana yang andal untuk lingkungan kampus. Mudah digunakan dan aman.
                         </p>
                     </div>
 
@@ -218,7 +218,7 @@
 
             <div class="border-top py-3 text-center bg-white">
                 <p class="small text-muted mb-0">
-                    &copy; {{ date('Y') }} <span class="fw-bold text-dark">Stock<span class="text-success">Sync</span></span>. All rights reserved.
+                    &copy; {{ date('Y') }} <span class="fw-bold text-dark">SarPras <span class="text-success">SV IPB</span></span>. All rights reserved.
                 </p>
             </div>
         </footer>

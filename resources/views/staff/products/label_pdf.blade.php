@@ -28,7 +28,7 @@
                             </div>
                             
                             <div class="barcode-num">{{ $product->barcode }}</div>
-                            <div class="price">&#8369; {{ number_format($product->price, 2) }}</div>
+                            <div class="price">Rp {{ number_format($product->price, 2, ',', '.') }}</div>
                         </td>
                     @endforeach
 

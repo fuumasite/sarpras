@@ -6,7 +6,7 @@
                     <div class="card-header bg-white py-3 border-bottom-0">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-user-plus text-primary me-2 fs-4"></i>
-                            <h5 class="fw-bold m-0 text-dark">Add New Staff</h5>
+                            <h5 class="fw-bold m-0 text-dark">Add New User</h5>
                         </div>
                     </div>
                     <div class="card-body p-4">
@@ -17,7 +17,7 @@
                                 <label class="form-label fw-bold small text-muted">Full Name <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-secondary"><i class="fas fa-user"></i></span>
-                                    <input type="text" name="name" class="form-control" placeholder="e.g. Juan Dela Cruz" required autofocus>
+                                    <input type="text" name="name" class="form-control" placeholder="Misal Binggie Rashel " required autofocus>
                                 </div>
                             </div>
 
@@ -25,7 +25,7 @@
                                 <label class="form-label fw-bold small text-muted">Email Address <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-secondary"><i class="fas fa-envelope"></i></span>
-                                    <input type="email" name="email" class="form-control" placeholder="staff@example.com" required>
+                                    <input type="email" name="email" class="form-control" placeholder="user@example.com" required>
                                 </div>
                             </div>
 
@@ -59,7 +59,7 @@
                                     Cancel
                                 </a>
                                 <button type="submit" class="btn btn-primary px-4 text-white d-inline-flex align-items-center justify-content-center" style="min-width: 140px;">
-                                    Create Staff
+                                    Create User
                                 </button>
                             </div>
                         </form>

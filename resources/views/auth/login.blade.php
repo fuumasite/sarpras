@@ -1,8 +1,8 @@
 <x-guest-layout>
     <div class="mb-4">
         <span class="waving-hand">👋</span>
-        <h3 class="fw-bold text-dark mb-1">Login into Inventory!</h3>
-        <p class="text-muted small">Nice to see you! Please log in with your account.</p>
+        <h3 class="fw-bold text-dark mb-1">Masuk ke SarPras SV IPB</h3>
+        <p class="text-muted small">Selamat datang! Silakan masuk menggunakan akun Anda untuk melaporkan dan memantau sarana kampus.</p>
     </div>
 
     <form method="POST" action="{{ route('login') }}">
@@ -29,26 +29,17 @@
                 <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
                 <label for="remember_me" class="form-check-label small text-muted">Remember me</label>
             </div>
-            
-            @if (Route::has('password.request'))
-                <a class="text-decoration-none small fw-bold text-primary" href="{{ route('password.request') }}">
-                    Forgot password?
-                </a>
-            @endif
         </div>
 
-        <div class="recaptcha-wrapper">
-            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-        </div>
-        @error('g-recaptcha-response') <div class="text-danger small text-center mb-3 mt-n2"> {{ $message }} </div> @enderror
+        
 
         <button type="submit" class="btn btn-primary">
             Login
         </button>
 
         <div class="text-center mt-4 small text-muted">
-            Don't have an account? 
-            <a href="{{ route('register') }}" class="fw-bold text-primary text-decoration-none">Signup here</a>
+            Belum punya akun? 
+            <a href="{{ route('register') }}" class="fw-bold text-primary text-decoration-none">Daftar di sini</a>
         </div>
     </form>
 </x-guest-layout>

@@ -2,8 +2,8 @@
     <div class="container py-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h3 class="fw-bold text-dark m-0">Product Inventory</h3>
-                <small class="text-muted">Manage all items and stocks</small>
+                <h3 class="fw-bold text-dark m-0">Inventaris Sarana dan Prasarana</h3>
+                <small class="text-muted">Kelola semua Inventaris Sarana dan Prasarana</small>
             </div>
             <div class="d-flex gap-2">
                 <a href="{{ route('admin.export.inventory') }}" class="btn btn-primary border d-inline-flex align-items-center justify-content-center shadow-sm px-4" target="_blank">
@@ -11,7 +11,7 @@
                 </a>
 
                 <a href="{{ route('admin.products.create') }}" class="btn btn-primary shadow-sm px-4">
-                    <i class="fas fa-plus me-2"></i> Add Product
+                    <i class="fas fa-plus me-2"></i> Add
                 </a>
             </div>
         </div>
@@ -44,7 +44,6 @@
                                         @endif
                                         <div>
                                             <div class="fw-bold small text-dark">{{ $product->name }}</div>
-                                            <div class="small text-muted">₱ {{ number_format($product->price, 2) }}</div>
                                         </div>
                                     </div>
                                 </td>
@@ -54,10 +53,10 @@
                                     </div>
                                 </td>
                                 <td class="px-3 text-center">
-                                    <span class="badge bg-light text-dark border">{{ $product->category->name ?? 'Uncategorized' }}</span>
+                                    <span class="badge bg-light text-dark border">{{ $product->category->name ?? 'Tidak Dikategorikan' }}</span>
                                 <td class="px-3 text-center">
                                     @if($product->quantity <= 10)
-                                        <span class="badge bg-danger">Low: {{ $product->quantity }}</span>
+                                        <span class="badge bg-danger">Rendah: {{ $product->quantity }}</span>
                                     @else
                                         <span class="badge bg-success">{{ $product->quantity }}</span>
                                     @endif

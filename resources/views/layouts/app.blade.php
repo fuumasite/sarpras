@@ -33,10 +33,10 @@
             <div class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                        <p class="text-muted small mb-0">
-                            &copy; {{ date('Y') }} <strong>Stock<span style="color: #8AB973;">Sync</span></strong>. All rights reserved.
-                        </p>
-                    </div>
+                                <p class="text-muted small mb-0">
+                                    &copy; {{ date('Y') }} <strong>SarPras <span style="color: #8AB973;">SV IPB</span></strong>. All rights reserved.
+                                </p>
+                            </div>
                     <div class="col-md-6 text-center text-md-end">
                         <ul class="list-inline mb-0 small">
                             <li class="list-inline-item"><a href="{{ route('privacy.policy') }}" target="_blank" class="text-decoration-none text-muted hover-success">Privacy</a></li>
@@ -67,7 +67,7 @@
                     <div class="d-flex">
                         <div class="toast-body fw-bold">
                             <i class="fas fa-exclamation-circle me-2"></i>
-                            Please check the form for errors.
+                            Periksa formulir untuk kesalahan.
                         </div>
                         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>

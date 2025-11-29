@@ -15,7 +15,7 @@ class UserController extends Controller
     // 1. Display list
     public function index(): View
     {
-        $users = User::where('role', 'staff')->latest()->get();
+        $users = User::where('role', 'user')->latest()->get();
         return view('admin.users.index', compact('users'));
     }
 
@@ -38,17 +38,17 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'staff',
+            'role' => 'user',
         ]);
 
         // RECORD ACTIVITY
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Created Staff',
-            'details' => 'Added new staff: ' . $user->name . ' (' . $user->email . ')'
+            'action' => 'Created User',
+            'details' => 'Added new user: ' . $user->name . ' (' . $user->email . ')'
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'New staff added successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'New user added successfully!');
     }
 
     // 4. Show Edit Form
@@ -81,11 +81,11 @@ class UserController extends Controller
         // RECORD ACTIVITY
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Updated Staff',
-            'details' => 'Updated details for staff: ' . $user->name
+            'action' => 'Updated User',
+            'details' => 'Updated details for user: ' . $user->name
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'Staff details updated successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'User details updated successfully!');
     }
 
     // 6. Delete User (WITH LOG)
@@ -98,18 +98,18 @@ class UserController extends Controller
         }
 
         // Capture name before deleting
-        $staffName = $user->name;
-        $staffEmail = $user->email;
+        $userName = $user->name;
+        $userEmail = $user->email;
 
         $user->delete();
 
         // RECORD ACTIVITY
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Deleted Staff',
-            'details' => 'Removed staff account: ' . $staffName . ' (' . $staffEmail . ')'
+            'action' => 'Deleted User',
+            'details' => 'Removed user account: ' . $userName . ' (' . $userEmail . ')'
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'Staff account deleted successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'User account deleted successfully!');
     }
 }

@@ -6,9 +6,9 @@
                href="{{ Auth::user()->role === 'admin' ? route('admin.dashboard') : route('dashboard') }}">
                
                 <div class="bg-success bg-opacity-10 rounded-3 p-2 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-warehouse text-success"></i>
+                    <i class="fas fa-university text-success"></i>
                 </div>
-                <span style="letter-spacing: -0.5px;">Stock<span style="color: #8AB973;">Sync</span></span>
+                <span style="letter-spacing: -0.5px;">SarPras <span style="color: #8AB973;">SV IPB</span></span>
             </a>
 
             <div class="dropdown">
@@ -33,11 +33,11 @@
                 </button>
                 
                 <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="profileDropdown">
-                    <li><span class="dropdown-item-text small text-muted">Signed in as <br><strong>{{ Auth::user()->role }}</strong></span></li>
+                    <li><span class="dropdown-item-text small text-muted">Masuk sebagai <br><strong>{{ Auth::user()->role }}</strong></span></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                            <i class="fas fa-user-cog me-2 text-muted"></i> Profile
+                            <i class="fas fa-user-cog me-2 text-muted"></i> Profil
                         </a>
                     </li>
                     <li>
@@ -45,7 +45,7 @@
                             @csrf
                             <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                <i class="fas fa-sign-out-alt me-2"></i> Log Out
+                                <i class="fas fa-sign-out-alt me-2"></i> Keluar
                             </a>
                         </form>
                     </li>
@@ -62,26 +62,26 @@
             @if(Auth::user()->role === 'admin')
                 <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" 
                    href="{{ route('admin.dashboard') }}">
-                    <i class="fas fa-chart-pie"></i> Dashboard
+                    <i class="fas fa-chart-pie"></i> Dasbor
                 </a>
 
                 <a class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" 
                     href="{{ route('admin.users.index') }}">
-                    <i class="fas fa-users-cog"></i> Staff
+                    <i class="fas fa-users-cog"></i> Pengguna
                 </a>
 
                 <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" 
                    href="{{ route('admin.categories.index') }}">
-                    <i class="fas fa-tags"></i> Categories
+                    <i class="fas fa-tags"></i> Kategori
                 </a>
 
                 <a class="nav-link {{ request()->routeIs('admin.products.*') ? 'active' : '' }}" 
                    href="{{ route('admin.products.index') }}">
-                    <i class="fas fa-box-open"></i> Products
+                    <i class="fas fa-box-open"></i> Sapras
                 </a>
 
-                <a class="nav-link {{ request()->routeIs('admin.restock.*') ? 'active' : '' }}" href="{{ route('admin.restock.index') }}">
-                    <i class="fas fa-bullhorn"></i> Requests
+                <a class="nav-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}" href="{{ route('admin.reports.index') }}">
+                    <i class="fas fa-bullhorn"></i> Laporan
                     @if(isset($pendingCount) && $pendingCount > 0)
                         <span class="badge bg-danger ms-2 rounded-pill" style="font-size: 0.7rem;">{{ $pendingCount }}</span>
                     @endif
@@ -89,12 +89,12 @@
 
                 <a class="nav-link {{ request()->routeIs('admin.activity-logs.*') ? 'active' : '' }}" 
                    href="{{ route('admin.activity-logs.index') }}">
-                    <i class="fas fa-history"></i> Activity Logs
+                    <i class="fas fa-history"></i> Log Aktivitas
                 </a>
             @else
                 <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" 
                    href="{{ route('dashboard') }}">
-                    <i class="fas fa-clipboard-list"></i> Inventory List
+                    <i class="fas fa-clipboard-list"></i> Daftar Inventaris
                 </a>
             @endif
 

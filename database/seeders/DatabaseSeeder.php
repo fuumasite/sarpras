@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(), // Auto-verified na ang Admin
         ]);
 
-        // 2. CREATE 3 STAFF USERS 
+        // 2. CREATE 3 USER USERS 
         User::factory(3)->create([
-            'role' => 'staff',
+            'role' => 'user',
             'password' => Hash::make('password'),
         ]);
 

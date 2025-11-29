@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('restock_requests', function (Blueprint $table) {
             $table->id();
-            // Link sa Product at Staff (Parehong UUID)
+            // Link sa Product at User (Parehong UUID)
             $table->foreignUuid('product_id')->constrained()->onDelete('cascade');
-            $table->foreignUuid('user_id')->constrained()->onDelete('cascade'); // Staff who requested
+            $table->foreignUuid('user_id')->constrained()->onDelete('cascade'); // User who requested
             
             $table->integer('quantity')->default(0); // Suggested quantity (optional)
             $table->string('status')->default('pending'); // pending, approved, rejected

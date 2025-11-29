@@ -1,12 +1,13 @@
 <x-app-layout>
     <div class="container py-5">
         <div class="mb-4">
-            <h3 class="fw-bold text-dark m-0">Audit Trail</h3>
-            <small class="text-muted">Track all system activities</small>
+            <h3 class="fw-bold text-dark m-0">History Aktivitas</h3>
+            <small class="text-muted">Lihat semua sistem aktivitas</small>
         </div>
 
         <div class="card shadow-lg border-0 rounded-3">
             <div class="card-body p-4">
+              
                 <table class="table table-hover align-middle datatable" style="width:100%">
                     <thead class="bg-light">
                         <tr>
@@ -60,4 +61,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>

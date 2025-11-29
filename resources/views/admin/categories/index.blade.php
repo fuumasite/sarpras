@@ -101,7 +101,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-muted">Category Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="e.g. Electronics" required>
+                            <input type="text" name="name" class="form-control" placeholder="Misal. Barang" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-muted">Description</label>

@@ -6,7 +6,7 @@
                     <div class="card-header bg-white py-3 border-bottom-0">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-edit text-primary me-2 fs-4"></i>
-                            <h5 class="fw-bold m-0 text-dark">Edit Product (Staff)</h5>
+                            <h5 class="fw-bold m-0 text-dark">Edit Product (User)</h5>
                         </div>
                     </div>
                     <div class="card-body p-4">
@@ -36,35 +36,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold small text-muted">Price (₱)</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light text-secondary fw-bold">₱</span>
-                                        <input type="number" step="0.01" name="price" class="form-control" value="{{ $product->price }}" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
                                     <label class="form-label fw-bold small text-muted">Stock</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-light text-secondary"><i class="fas fa-cubes"></i></span>
                                         <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}" required>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold small text-muted">Image</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light text-secondary"><i class="fas fa-image"></i></span>
-                                        <input type="file" name="image" class="form-control" accept="image/*">
-                                    </div>
-                                    
-                                    @if($product->image_path)
-                                        <div class="mt-2 d-flex align-items-center p-2 bg-light rounded border">
-                                            <img src="{{ asset('storage/' . $product->image_path) }}" class="rounded border me-2" width="40" height="40" style="object-fit: cover;">
-                                            <small class="text-muted fst-italic">Current Image</small>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
 

@@ -6,7 +6,7 @@
                     <div class="card-header bg-white py-3 border-bottom-0">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-user-edit text-primary me-2 fs-4"></i>
-                            <h5 class="fw-bold m-0 text-dark">Edit Staff Account</h5>
+                            <h5 class="fw-bold m-0 text-dark">Edit User Account</h5>
                         </div>
                     </div>
                     <div class="card-body p-4">
@@ -18,7 +18,7 @@
                                 <label class="form-label fw-bold small text-muted">Full Name <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-secondary"><i class="fas fa-user"></i></span>
-                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}" placeholder="Staff Name" required>
+                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}" placeholder="User Name" required>
                                 </div>
                             </div>
 
@@ -26,7 +26,7 @@
                                 <label class="form-label fw-bold small text-muted">Email Address <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-secondary"><i class="fas fa-envelope"></i></span>
-                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}" placeholder="staff@example.com" required>
+                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}" placeholder="user@example.com" required>
                                 </div>
                             </div>
 

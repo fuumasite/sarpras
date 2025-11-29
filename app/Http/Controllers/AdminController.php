@@ -15,7 +15,7 @@ class AdminController extends Controller
         // 1. Existing Stats
         $totalProducts = Product::count();
         $totalCategories = Category::count();
-        $totalStaff = User::where('role', 'staff')->count();
+        $totalUsers = User::where('role', 'user')->count();
         $lowStockCount = Product::where('quantity', '<=', 10)->count();
         
         // 2. CHART DATA 1: Products per Category
@@ -27,14 +27,20 @@ class AdminController extends Controller
         // 3. CHART DATA 2: Stock Status (Healthy vs Low)
         $healthyStockCount = Product::where('quantity', '>', 10)->count();
 
+        // Reports summary (pending)
+        $pendingReportsCount = \App\Models\Report::where('status', 'pending')->count();
+        $recentReports = \App\Models\Report::with(['user','product'])->latest()->take(6)->get();
+
         return view('admin.dashboard', compact(
             'totalProducts', 
             'totalCategories', 
-            'totalStaff', 
+            'totalUsers', 
             'lowStockCount',
             'categoryNames',
             'productCounts',
-            'healthyStockCount'
+            'healthyStockCount',
+            'pendingReportsCount',
+            'recentReports'
         ));
     }
 

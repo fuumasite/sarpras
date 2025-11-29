@@ -6,10 +6,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'StockSync') }}</title>
         
-        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/9431/9431186.png" type="image/png">
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         
         @vite(['resources/css/app.scss', 'resources/js/app.js'])
     </head>
@@ -26,11 +25,11 @@
                         
                         <h2>
                             <span class="typing-text">
-                                <span class="text-dark"> Welcome to </span> StockSync
+                                <span class="text-dark"> Welcome to </span> SarPras SV IPB
                             </span>
                         </h2>
 
-                        <p>Manage your stocks and assets efficiently today!</p>
+                        <p>Laporkan Sarana Dan Prasarana Kampus SV IPB</p>
                         
                         <img src="{{ asset('images/undraw_term-sheet_70lo.svg') }}" 
                              alt="Inventory Illustration" 
@@ -41,12 +40,12 @@
                             <img src="https://i.pravatar.cc/150?img=5" alt="User">
                             <img src="https://i.pravatar.cc/150?img=8" alt="User">
                             <img src="https://i.pravatar.cc/150?img=12" alt="User">
-                            <span>100+ Staff joined us, now it's your turn.</span>
+                            <span>100+ Users joined us, now it's your turn.</span>
                         </div>
                     </div>
 
                     <div class="mt-auto pb-3 text-muted small">
-                        &copy; {{ date('Y') }} StockSync. All rights reserved.
+                        &copy; {{ date('Y') }} SarPras SV IPB. All rights reserved.
                     </div>
                 </div>
 

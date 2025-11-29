@@ -11,7 +11,7 @@ class ActivityLog extends Model
 
     protected $fillable = ['user_id', 'action', 'details'];
 
-    // Relationship: Ang log ay pagmamay-ari ng isang User
+
     public function user()
     {
         return $this->belongsTo(User::class);

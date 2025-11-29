@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('admin.dashboard'));
         }
 
-        // Default: Staff Dashboard
+        // Default: User Dashboard
         return redirect()->intended(route('dashboard'));
     }
 

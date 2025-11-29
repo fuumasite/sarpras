@@ -17,7 +17,7 @@ class AdminMiddleware
     {
         // Check kung ang user ay HINDI admin
         if ($request->user()->role !== 'admin') {
-            // Kung staff ka at tinry mo i-access ang admin page, abort 403 (Forbidden)
+            // Kung user ka at tinry mo i-access ang admin page, abort 403 (Forbidden)
             abort(403, 'UNAUTHORIZED ACCESS: Admins only.');
         }
 

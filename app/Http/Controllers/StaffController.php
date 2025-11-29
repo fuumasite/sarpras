@@ -10,6 +10,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\RestockRequest;
+use App\Models\Report;
 use Picqer\Barcode\BarcodeGeneratorPNG; // Import Barcode Generator
 use Barryvdh\DomPDF\Facade\Pdf; // Import PDF
 
@@ -19,7 +20,11 @@ class StaffController extends Controller
     public function index(Request $request): View
     {
         $products = Product::with('category')->latest()->get();
-        return view('dashboard', compact('products'));
+
+        // User's recent reports
+        $myReports = Report::where('user_id', Auth::id())->with('product')->latest()->take(10)->get();
+
+        return view('dashboard', compact('products', 'myReports'));
     }
 
     // 2. Show Create Form
@@ -35,7 +40,6 @@ class StaffController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -52,8 +56,8 @@ class StaffController extends Controller
         // LOG ACTIVITY
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Created Product (Staff)',
-            'details' => 'Staff added: ' . $product->name
+            'action' => 'Created Product (User)',
+            'details' => 'User added: ' . $product->name
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Product added successfully!');
@@ -75,7 +79,6 @@ class StaffController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -95,8 +98,8 @@ class StaffController extends Controller
         // LOG ACTIVITY
         ActivityLog::create([
             'user_id' => Auth::id(),
-            'action' => 'Updated Product (Staff)',
-            'details' => 'Staff updated: ' . $product->name
+            'action' => 'Updated Product (User)',
+            'details' => 'User updated: ' . $product->name
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Product updated successfully!');
@@ -140,35 +143,35 @@ class StaffController extends Controller
         return back()->with('success', "Stock adjusted successfully: {$product->name}");
     }
 
-    // 7. Request Restock Logic
-    public function submitRestockRequest(Request $request)
-    {
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'quantity'   => 'nullable|integer|min:1',
-            'notes'      => 'nullable|string|max:255',
-        ]);
+    // // 7. Request Restock Logic
+    // public function submitRestockRequest(Request $request)
+    // {
+    //     $request->validate([
+    //         'product_id' => 'required|exists:products,id',
+    //         'quantity'   => 'nullable|integer|min:1',
+    //         'notes'      => 'nullable|string|max:255',
+    //     ]);
 
-        $product = Product::findOrFail($request->product_id);
+    //     $product = Product::findOrFail($request->product_id);
 
-        // Create Request
-        RestockRequest::create([
-            'product_id' => $product->id,
-            'user_id'    => Auth::id(),
-            'quantity'   => $request->quantity ?? 0, // 0 means "Unspecified"
-            'notes'      => $request->notes,
-            'status'     => 'pending'
-        ]);
+    //     // Create Request
+    //     RestockRequest::create([
+    //         'product_id' => $product->id,
+    //         'user_id'    => Auth::id(),
+    //         'quantity'   => $request->quantity ?? 0, // 0 means "Unspecified"
+    //         'notes'      => $request->notes,
+    //         'status'     => 'pending'
+    //     ]);
 
-        // Log Activity
-        ActivityLog::create([
-            'user_id' => Auth::id(),
-            'action'  => 'Requested Restock',
-            'details' => "Requested restock for: {$product->name}"
-        ]);
+    //     // Log Activity
+    //     ActivityLog::create([
+    //         'user_id' => Auth::id(),
+    //         'action'  => 'Requested Restock',
+    //         'details' => "Requested restock for: {$product->name}"
+    //     ]);
 
-        return back()->with('success', 'Restock request sent to Admin successfully!');
-    }
+    //     return back()->with('success', 'Restock request sent to Admin successfully!');
+    // }
 
     // 8. Print Barcode Label
     public function printLabel($id)

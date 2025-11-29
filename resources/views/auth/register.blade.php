@@ -1,8 +1,8 @@
 <x-guest-layout>
     <div class="mb-4">
         <span class="waving-hand">🚀</span>
-        <h3 class="fw-bold text-dark mb-1">Create Account</h3>
-        <p class="text-muted small">Nice to see you! Join our inventory team today!</p>
+        <h3 class="fw-bold text-dark mb-1">Buat Akun</h3>
+        <p class="text-muted small">Selamat datang! Buat akun untuk mulai melaporkan sarana dan prasarana kampus.</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}">
@@ -48,18 +48,15 @@
             </label>
         </div>
 
-        <div class="recaptcha-wrapper">
-            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-        </div>
-        @error('g-recaptcha-response') <div class="text-danger small text-center mb-3 mt-n2"> {{ $message }} </div> @enderror
+        
 
         <button type="submit" class="btn btn-primary">
-            Sign Up
+            Daftar
         </button>
 
         <div class="text-center mt-4 small text-muted">
-            Already have an account? 
-            <a href="{{ route('login') }}" class="fw-bold text-primary text-decoration-none">Log in here</a>
+            Sudah punya akun? 
+            <a href="{{ route('login') }}" class="fw-bold text-primary text-decoration-none">Masuk di sini</a>
         </div>
     </form>
 </x-guest-layout>

@@ -1,10 +1,10 @@
-# 📦 StockSync — Smart Inventory Management System
+# 📚 SarPras SV IPB — Sistem Pelaporan Sarana & Prasarana Kampus
 
-## **1. Project Overview**
+## **1. Ringkasan Proyek**
 
-Ang **StockSync** ay isang modernong Inventory Management System na idinisenyo para sa mabilis, secure, at scalable na pagma-manage ng stocks. Gumagamit ito ng **Strict UUID Architecture** para sa mataas na security at **Role-Based Access Control** para sa separation ng duties ng Admin at Staff.
+**SarPras SV IPB** adalah sistem pelaporan dan manajemen sarana & prasarana kampus yang memungkinkan pengguna (mahasiswa/user) melaporkan kerusakan, permintaan perbaikan, dan memantau status penyelesaian. Sistem ini menggunakan UUID untuk keamanan dan mendukung peran Admin dan Pengguna.
 
-Ang system ay nagtatampok ng **Real-time Analytics**, **Barcode Generation**, **PDF Reporting**, at **Audit Trails** para sa accountability.
+Fitur utama termasuk **Laporan & Statistik Real-time**, **Manajemen Aset**, **Permintaan Restock / Perbaikan**, dan **Audit Trails** untuk jejak tindakan pengguna.
 
 ## **2. Technical Stack**
 
@@ -17,7 +17,7 @@ Ang system ay binuo gamit ang mga sumusunod na teknolohiya base sa requirements:
 -   **Charts:** Chart.js (Data Visualization)
 -   **PDF & Barcodes:** `barryvdh/laravel-dompdf` & `picqer/php-barcode-generator`
 -   **Authentication:** Laravel Breeze (Customized)
--   **Security:** Google reCAPTCHA v2, Email Verification
+-   **Security:** Sistem menggunakan autentikasi standar; reCAPTCHA dan verifikasi email dinonaktifkan dalam deployment ini (opsional)
 
 ## **3. System Architecture**
 
@@ -33,25 +33,23 @@ Lahat ng Primary Keys at Foreign Keys sa database ay gumagamit ng **UUID (Univer
 May dalawang user roles na protektado ng Middleware:
 
 1.  **Admin:** Full Access (CRUD Products/Categories, Manage Users, Reports, Analytics).
-2.  **Staff:** Restricted Access (View Inventory, Stock In/Out, Request Restock, Print Labels).
+2.  **User:** Restricted Access (View Inventory, Stock In/Out, Request Restock, Print Labels).
 
 ## **4. Features & Functionalities**
 
-### **🔐 Authentication & Security**
+### **🔐 Autentikasi & Keamanan**
 
--   **Modern Split-Screen UI:** Pastel Green Theme na may animated typing text at dynamic illustrations.
--   **Security Layers:**
-    -   **reCAPTCHA v2:** Sa Login, Register, at Forgot Password forms.
-    -   **Email Verification:** Required bago maka-access sa dashboard.
-    -   **Toast Notifications:** Real-time alerts para sa success at errors (walang static flash messages).
-    -   **Password Visibility:** Toggle Eye Icon para sa UX.
+-   **Modern Split-Screen UI:** Desain ramah pengguna dengan tema hijau pastel.
+-   **Keamanan:** Autentikasi berbasis Laravel (Breeze). Fitur reCAPTCHA dan verifikasi email tidak aktif secara default pada konfigurasi ini.
+-   **Notifikasi:** Toast notifications untuk pemberitahuan sukses dan error.
+-   **Password Visibility:** Toggle Eye Icon untuk kenyamanan pengguna.
 
 ### **📊 Admin Dashboard (Analytics)**
 
 -   **Interactive Charts:**
     -   **Bar Chart:** Inventory distribution per category (Drill-down capability).
     -   **Doughnut Chart:** Real-time Stock Health (Healthy vs. Low Stock).
--   **Live Stats Cards:** Total Products, Categories, Staff, at Low Stock Alerts.
+-   **Live Stats Cards:** Total Products, Categories, Users, at Low Stock Alerts.
 -   **Design:** Cards with "Lift Effect" shadow animation.
 
 ### **📦 Product Management**
@@ -65,16 +63,16 @@ May dalawang user roles na protektado ng Middleware:
 
 -   Create, Edit, Delete categories gamit ang **Bootstrap Modals** (walang page reload).
 
-### **🔄 Stock Control (Staff Features)**
+### **🔄 Stock Control (User Features)**
 
 -   **Quick Adjust:** `+` (Stock In) at `-` (Stock Out) buttons na may logs ng rason (e.g., "Sold", "Damaged").
--   **Restock Requests:** Ang staff ay pwedeng mag-request ng stocks sa Admin.
-    -   _Flow:_ Staff Request -\> Admin Review -\> Approve (Auto-add stock) / Reject.
+-   **Restock Requests:** Ang user ay pwedeng mag-request ng stocks sa Admin.
+    -   _Flow:_ User Request -> Admin Review -> Approve (Auto-add stock) / Reject.
 -   **Barcode Printing:** Generate ng PDF stickers na may Barcode, Name, at Price. (Layout: 3 Columns, Legal Size).
 
 ### **👥 User Management**
 
--   Ang Admin ay pwedeng mag-**Add**, **Edit**, at **Delete** ng Staff accounts.
+-   Ang Admin ay pwedeng mag-**Add**, **Edit**, at **Delete** ng User accounts.
 -   Auto-generated avatar based sa initials kung walang inupload na picture.
 
 ### **📝 Audit Trail & Reports**
@@ -111,12 +109,11 @@ composer install
 npm install
 ```
 
-**Step 3: Environment Setup**
+**Step 3: Pengaturan Environment**
 
-1.  Kopyahin ang `.env.example` at gawing `.env`.
-2.  I-set ang database credentials (`DB_DATABASE=inventory_system`).
-3.  I-set ang Mail credentials (Gmail SMTP) para sa verification.
-4.  I-set ang `RECAPTCHA_SITE_KEY` at `SECRET_KEY`.
+1.  Salin `.env.example` menjadi `.env`.
+2.  Isi kredensial database (`DB_DATABASE=inventory_system`).
+3.  (Opsional) Isi kredensial Mail jika ingin mengaktifkan notifikasi email.
 
 **Step 4: Key Generation & Migration**
 
@@ -133,8 +130,10 @@ Mahalaga ito para lumabas ang images.
 ```bash
 php artisan storage:link
 
-**Step 6: Run Application**
-Kailangan bukas ang dalawang terminal:
-  * Terminal 1 (Backend): `php artisan serve`
-  * Terminal 2 (Frontend): `npm run dev`
+**Step 6: Menjalankan Aplikasi**
+Buka terminal untuk menjalankan backend dan (opsional) frontend:
+```powershell
+php artisan serve
+npm run dev
+```
 ```

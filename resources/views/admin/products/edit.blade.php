@@ -38,36 +38,11 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold small text-muted">Price (₱) <span class="text-danger">*</span></label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light text-secondary fw-bold">₱</span>
-                                        <input type="number" step="0.01" name="price" class="form-control" value="{{ $product->price }}" placeholder="0.00" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
                                     <label class="form-label fw-bold small text-muted">Stock Quantity <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-light text-secondary"><i class="fas fa-cubes"></i></span>
                                         <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}" placeholder="0" required>
                                     </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold small text-muted">Change Image (Optional)</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light text-secondary"><i class="fas fa-image"></i></span>
-                                        <input type="file" name="image" class="form-control" accept="image/*">
-                                    </div>
-                                    
-                                    @if($product->image_path)
-                                        <div class="mt-2 d-flex align-items-center p-2 bg-light rounded border">
-                                            <img src="{{ asset('storage/' . $product->image_path) }}" class="rounded border me-2" width="40" height="40" style="object-fit: cover;">
-                                            <small class="text-muted fst-italic">Current Image</small>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
 
