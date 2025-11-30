@@ -15,7 +15,7 @@ class ReportController extends Controller
     {
         $request->validate([
             'product_id' => 'required|exists:products,id',
-            'type' => 'required|string|in:rusak,peminjaman,pengembalian,other',
+            'type' => 'required|string|in:rusak,peminjaman,pengembalian,lainnya',
             'quantity' => 'nullable|integer|min:0',
             'notes' => 'nullable|string|max:1000',
         ]);

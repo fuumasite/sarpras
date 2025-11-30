@@ -16,14 +16,16 @@ class DatabaseSeeder extends Seeder
     {
         // 1. CREATE ADMIN (Static UUID) 
         // Ginagamit natin ang static UUID para madaling tandaan sa testing
-        User::create([
-            'id' => '99999999-9999-9999-9999-999999999999', 
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'), // Default password
-            'role' => 'admin',
-            'email_verified_at' => now(), // Auto-verified na ang Admin
-        ]);
+        User::firstOrCreate(
+            ['id' => '99999999-9999-9999-9999-999999999999'],
+            [
+                'name' => 'Admin User',
+                'email' => 'admin@example.com',
+                'password' => Hash::make('password'), // Default password
+                'role' => 'admin',
+                'email_verified_at' => now(), // Auto-verified na ang Admin
+            ]
+        );
 
         // 2. CREATE 3 USER USERS 
         User::factory(3)->create([
@@ -41,10 +43,13 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($categories as $catName) {
-            Category::create([
-                'name' => $catName,
-                'description' => 'Default description for ' . $catName
-            ]);
+            Category::firstOrCreate(
+                ['name' => $catName],
+                ['description' => 'Default description for ' . $catName]
+            );
         }
+
+        // 4. Call ReportSeeder to seed reports
+        $this->call(ReportSeeder::class);
     }
 }

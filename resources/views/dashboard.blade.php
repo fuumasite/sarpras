@@ -7,6 +7,12 @@
             </div>
         </div>
 
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reportModal" title="Tambah Laporan Baru">
+                <i class="fas fa-plus me-2"></i> Tambah Laporan
+            </button>
+        </div>
+
         <div class="card shadow-lg border-0 rounded-3">
             <div class="card-body p-4">
                 <table class="table table-hover align-middle datatable" style="width:100%">
@@ -54,38 +60,12 @@
                                 </td>
                                 
                                 <td class="px-3 text-center">
-                                    @php
-                                        $userReport = isset($myReports) ? $myReports->firstWhere('product_id', $product->id) : null;
-                                    @endphp
-
-                                    @if($userReport)
-                                        @if($userReport->status === 'pending')
-                                            <div class="mb-2"><span class="badge bg-warning">Laporan: Menunggu</span></div>
-                                        @elseif($userReport->status === 'approved')
-                                            <div class="mb-2"><span class="badge bg-success">Laporan: Disetujui</span></div>
-                                        @else
-                                            <div class="mb-2"><span class="badge bg-danger">Laporan: Ditolak</span></div>
-                                        @endif
-                                    @endif
-
-                                    <div class="btn-group" role="group">
-                                        <button type="button"
-                                                class="btn btn-sm btn-light text-secondary border me-2 rounded report-button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#reportModal"
-                                                data-id="{{ $product->id }}"
-                                                data-name="{{ $product->name }}"
-                                                title="Laporkan Barang">
-                                            <i class="fas fa-flag"></i>
-                                        </button>
-
-                                        <a href="{{ route('staff.products.label', $product->id) }}"
-                                           target="_blank"
-                                           class="btn btn-sm btn-light text-warning border rounded"
-                                           title="Cetak Label">
-                                            <i class="fas fa-print"></i>
-                                        </a>
-                                    </div>
+                                    <a href="{{ route('staff.products.label', $product->id) }}"
+                                       target="_blank"
+                                       class="btn btn-sm btn-light text-warning border rounded"
+                                       title="Cetak Label">
+                                        <i class="fas fa-print"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @empty
@@ -104,39 +84,53 @@
             <div class="modal-content border-0 shadow">
                 <form action="{{ route('reports.store') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="product_id" id="report_product_id">
 
                     <div class="modal-header bg-light text-dark">
-                        <h5 class="modal-title fw-bold"><i class="fas fa-flag me-2"></i> Laporan Sarana dan Prasarana</h5>
+                        <h5 class="modal-title fw-bold"><i class="fas fa-flag me-2"></i> Tambah Laporan Sarana dan Prasarana</h5>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"></button>
                     </div>
 
                     <div class="modal-body p-4">
-                        <p class="text-muted mb-3">
-                            Melaporkan: <strong id="report_product_name" class="text-dark">Product</strong>
-                        </p>
+                        <label class="form-label fw-bold small text-muted">Pilih Sarpar <span class="text-danger">*</span></label>
+                        <select name="product_id" id="report_product_id" class="form-select mb-3" required>
+                            <option value="">-- pilih Sarpar --</option>
+                            @foreach($products as $p)
+                                <option value="{{ $p->id }}" {{ (string)old('product_id') === (string)$p->id ? 'selected' : '' }}>{{ $p->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         <label class="form-label fw-bold small text-muted">Tipe Laporan</label>
                         <select name="type" class="form-select mb-3" required>
-                            <option value="rusak">Rusak</option>
-                            <option value="peminjaman">Peminjaman</option>
-                            <option value="pengembalian">Pengembalian</option>
-                            <option value="lainnya">Lainnya</option>
+                            <option value="">-- Pilih Tipe --</option>
+                            <option value="rusak" {{ old('type') === 'rusak' ? 'selected' : '' }}>Rusak</option>
+                            <option value="peminjaman" {{ old('type') === 'peminjaman' ? 'selected' : '' }}>Peminjaman</option>
+                            <option value="pengembalian" {{ old('type') === 'pengembalian' ? 'selected' : '' }}>Pengembalian</option>
+                            <option value="lainnya" {{ old('type') === 'lainnya' ? 'selected' : '' }}>Lainnya</option>
                         </select>
 
                         <label class="form-label fw-bold small text-muted">Jumlah (jika relevan)</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-light"><i class="fas fa-hashtag"></i></span>
-                            <input type="number" name="quantity" class="form-control" placeholder="Jumlah (opsional)">
+                            <input type="number" name="quantity" class="form-control" placeholder="Jumlah (opsional)" value="{{ old('quantity') }}">
                         </div>
 
                         <label class="form-label fw-bold small text-muted">Deskripsi / Catatan</label>
-                        <textarea name="notes" class="form-control" rows="3" placeholder="Jelaskan masalah atau kebutuhan..."></textarea>
+                        <textarea name="notes" class="form-control" rows="3" placeholder="Jelaskan masalah atau kebutuhan...">{{ old('notes') }}</textarea>
                     </div>
 
                     <div class="modal-footer border-0 bg-light">
                         <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-secondary">Kirim Laporan</button>
+                        <button type="submit" class="btn btn-primary">Kirim Laporan</button>
                     </div>
                 </form>
             </div>
@@ -187,15 +181,16 @@
 </x-app-layout>
 
 @push('scripts')
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function () {
         var reportModal = document.getElementById('reportModal');
-        reportModal && reportModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget;
-            var id = button.getAttribute('data-id');
-            var name = button.getAttribute('data-name');
-            document.getElementById('report_product_id').value = id;
-            document.getElementById('report_product_name').textContent = name;
+        var reportForm = document.querySelector('#reportModal form');
+
+        // Reset form when modal is dismissed
+        reportModal && reportModal.addEventListener('hidden.bs.modal', function () {
+            if (reportForm) reportForm.reset();
+            var clientError = document.getElementById('report_client_error');
+            if (clientError) clientError.classList.add('d-none');
         });
     });
 </script>
